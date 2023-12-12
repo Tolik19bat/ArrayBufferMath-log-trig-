@@ -10,7 +10,7 @@
 // "use strict"
 
 // export default
-class Math {//создаём класс от которого будут наследоваться другие классы
+class Attackpower {//создаём класс от которого будут наследоваться другие классы
   constructor(attack, distance) {//конструктор
     this.attack = attack;
     this.distance = distance;
@@ -26,24 +26,7 @@ class Math {//создаём класс от которого будут нас�
   }
 }
 
-Object.prototype.log2 = function () {
-  if (!Math.log2) {
-    // Если нет, создаем свою реализацию
-    Math.log2 = function (x) {
-      return Math.log(x) / Math.log(2);
-    }
-  }
-  // Проверяем, поддерживается ли Math.log в текущем окружении
-  if (!Math.log) {
-    Math.log = function (x) {
-      // Ваша реализация логарифма
-      // Например, можно использовать формулу логарифма по основанию 10 и Math.log10
-      return Math.log(x) / Math.log(10);
-    }
-  }
-}
-
-class Magician extends Math {
+class Magician extends Attackpower {
   constructor(attack, distance, stoned = false) {
     super(attack, distance);
     this.stoned = stoned;
@@ -53,9 +36,7 @@ class Magician extends Math {
     const attackWithDistanceModifier = this.getAttackWithDistanceModifier();
 
     if (this.stoned) {
-      const math = Math.log2(this.distance);
-
-      const stonedAttack = attackWithDistanceModifier - (math * 5);
+      const stonedAttack = attackWithDistanceModifier - Math.log2(this.distance) * 5;
 
       return stonedAttack >= 0 ? stonedAttack : 0;
     }
@@ -71,7 +52,7 @@ class Magician extends Math {
   }
 }
 
-class Daemon extends Math {
+class Daemon extends Attackpower {
   constructor(attack, distance, stoned = false) {
     super(attack, distance);
     this.stoned = stoned;
@@ -80,8 +61,7 @@ class Daemon extends Math {
   getAttack() {
     const attackWithDistanceModifier = this.getAttackWithDistanceModifier();
     if (this.stoned) {
-      const math = Math.log2(this.distance);
-      const stonedAttack = attackWithDistanceModifier - (math * 5);
+      const stonedAttack = attackWithDistanceModifier - Math.log2(this.distance) * 5;
       return stonedAttack >= 0 ? stonedAttack : 0;
     }
     return attackWithDistanceModifier;
@@ -100,7 +80,7 @@ class Daemon extends Math {
 const magician = new Magician(100, 2);
 console.log(magician.getAttack()); // Выведет 90
 
-const daemon = new Daemon(120, 5);
+const daemon = new Daemon(100, 2);
 console.log(daemon.getAttack()); // Выведет 72
 
 magician.isStoned = true;
