@@ -11,7 +11,7 @@ import { Magician, Daemon } from '../app'; //путь к нашим класса
 
 
     test('getAttack должен правильно рассчитывать атаку, не будучи забит камнями', () => {
-      const magician = new Magician(100, 2);
+      let magician = new Magician(100, 2);
       expect(magician.getAttack()).toBe(90);
     });
 
@@ -29,18 +29,18 @@ import { Magician, Daemon } from '../app'; //путь к нашим класса
 
 
     test('getAttack должен правильно рассчитывать атаку не будучи забит камнями', () => {
-      const daemon = new Daemon(120, 5);
-      expect(daemon.getAttack()).toBe(72);
+      const daemon = new Daemon(100, 2);
+      expect(daemon.getAttack()).toBe(90);
     });
 
     test('getAttack должен правильно рассчитывать атаку с камням', () => {
-      const daemon = new Daemon(120, 5);
+      const daemon = new Daemon(100, 2);
       daemon.isStoned = true;
-      expect(daemon.getAttack()).toBe(54);
+      expect(daemon.getAttack()).toBe(85);
     });
 
     test('setDistance следует обновить состояние', () => {
-      const daemon = new Daemon(120, 5);
-      daemon.setDistance(4);
-      expect(daemon.distance).toBe(4);
+      const daemon = new Daemon(100, 2);
+      daemon.setDistance(3);
+      expect(daemon.distance).toBe(3);
     });

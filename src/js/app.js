@@ -1,16 +1,16 @@
 
 // TODO: write your code here
-// import sum from './basic';
-//
-// console.log('worked');
-//
-// console.log(sum([1, 2]));
+import sum from './basic';
+
+console.log('worked');
+
+console.log(sum([1, 2]));
 //=====================================================
 
-// "use strict"
+"use strict"
+export {Magician, Daemon}
 
-// export default
-class Attackpower {//создаём класс от которого будут наследоваться другие классы
+ class Attackpower {//создаём класс от которого будут наследоваться другие классы
   constructor(attack, distance) {//конструктор
     this.attack = attack;
     this.distance = distance;
