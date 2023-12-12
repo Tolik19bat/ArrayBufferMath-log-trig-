@@ -8,12 +8,6 @@
 //=====================================================
 
 // "use strict"
-// Object.prototype.mathLog2 = function () {
-//   Math.log2 || function (x) {
-//     return Math.log(x) / Math.LN2;
-//   }
-// }
-
 
 // export default
 class Math {//создаём класс от которого будут наследоваться другие классы
@@ -32,24 +26,22 @@ class Math {//создаём класс от которого будут нас�
   }
 }
 
-Object.prototype.log2 = function() {
-  // if (!Math.log2) {
-  //   // Если нет, создаем свою реализацию
-  //   Math.log2 = function (x) {
-  //     return Math.log(x) / Math.log(2);
-  //   }
-  // }
-      // Проверяем, поддерживается ли Math.log в текущем окружении
-      if (!Math.log2) {
-        // Если нет, создаем свою реализацию
-
-        Math.log = function (x) {
-          // Ваша реализация логарифма
-          // Например, можно использовать формулу логарифма по основанию 10 и Math.log10
-          return Math.log(x) / Math.log(2);
-        }
-      }
+Object.prototype.log2 = function () {
+  if (!Math.log2) {
+    // Если нет, создаем свою реализацию
+    Math.log2 = function (x) {
+      return Math.log(x) / Math.log(2);
     }
+  }
+  // Проверяем, поддерживается ли Math.log в текущем окружении
+  if (!Math.log) {
+    Math.log = function (x) {
+      // Ваша реализация логарифма
+      // Например, можно использовать формулу логарифма по основанию 10 и Math.log10
+      return Math.log(x) / Math.log(10);
+    }
+  }
+}
 
 class Magician extends Math {
   constructor(attack, distance, stoned = false) {
@@ -57,13 +49,11 @@ class Magician extends Math {
     this.stoned = stoned;
   }
 
-
-
   getAttack() {
     const attackWithDistanceModifier = this.getAttackWithDistanceModifier();
 
     if (this.stoned) {
-      const math = log2(this.distance);
+      const math = Math.log2(this.distance);
 
       const stonedAttack = attackWithDistanceModifier - (math * 5);
 
@@ -71,7 +61,6 @@ class Magician extends Math {
     }
     return attackWithDistanceModifier;
   }
-
 
   get isStoned() {
     return this.stoned;
