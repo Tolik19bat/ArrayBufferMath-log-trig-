@@ -80,7 +80,6 @@ class Daemon extends Math {
   getAttack() {
     const attackWithDistanceModifier = this.getAttackWithDistanceModifier();
     if (this.stoned) {
-
       const math = Math.log2(this.distance);
       const stonedAttack = attackWithDistanceModifier - (math * 5);
       return stonedAttack >= 0 ? stonedAttack : 0;
