@@ -8,9 +8,10 @@ console.log(sum([1, 2]));
 //=====================================================
 
 "use strict"
-export {Magician, Daemon}
+import Magician from './magician';
+import Daemon from './daemon';
 
- class Attackpower {//создаём класс от которого будут наследоваться другие классы
+export default class Attackpower {//создаём класс от которого будут наследоваться другие классы
   constructor(attack, distance) {//конструктор
     this.attack = attack;
     this.distance = distance;
@@ -26,55 +27,8 @@ export {Magician, Daemon}
   }
 }
 
-class Magician extends Attackpower {
-  constructor(attack, distance, stoned = false) {
-    super(attack, distance);
-    this.stoned = stoned;
-  }
 
-  getAttack() {
-    const attackWithDistanceModifier = this.getAttackWithDistanceModifier();
 
-    if (this.stoned) {
-      const stonedAttack = attackWithDistanceModifier - Math.log2(this.distance) * 5;
-
-      return stonedAttack >= 0 ? stonedAttack : 0;
-    }
-    return attackWithDistanceModifier;
-  }
-
-  get isStoned() {
-    return this.stoned;
-  }
-
-  set isStoned(value) {
-    this.stoned = value;
-  }
-}
-
-class Daemon extends Attackpower {
-  constructor(attack, distance, stoned = false) {
-    super(attack, distance);
-    this.stoned = stoned;
-  }
-
-  getAttack() {
-    const attackWithDistanceModifier = this.getAttackWithDistanceModifier();
-    if (this.stoned) {
-      const stonedAttack = attackWithDistanceModifier - Math.log2(this.distance) * 5;
-      return stonedAttack >= 0 ? stonedAttack : 0;
-    }
-    return attackWithDistanceModifier;
-  }
-
-  get isStoned() {
-    return this.stoned;
-  }
-
-  set isStoned(value) {
-    this.stoned = value;
-  }
-}
 
 // Пример использования
 const magician = new Magician(100, 2);
