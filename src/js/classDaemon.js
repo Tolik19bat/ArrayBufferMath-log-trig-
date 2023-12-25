@@ -1,11 +1,11 @@
-import Attackpower from './app';
+import {Attackpower} from './app';
 
-export default class Daemon extends Attackpower {
+export class Daemon extends Attackpower {
   constructor(attack, distance, stoned = false) {
     super(attack, distance);
     this.stoned = stoned;
-    this.attack;
-    this.distance;
+    this.attack = attack;
+    this.distance = distance;
   }
 
   get attack() {

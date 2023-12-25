@@ -1,6 +1,6 @@
-import { Attackpower } from './app';
+import {Attackpower} from './app';
 
-export default class Magician extends Attackpower {
+export class Magician extends Attackpower {
   constructor(attack, distance, stoned = false) {
     super(attack, distance);
     this.stoned = stoned;

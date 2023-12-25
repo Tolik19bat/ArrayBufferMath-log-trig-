@@ -7,10 +7,10 @@
 // console.log(sum([1, 2]));
 //=====================================================
 
-import { Magician } from './classMagician';
-import { Daemon } from './classDaemon';
+import {Magician} from './classMagician';
+import {Daemon} from './classDaemon';
 
-export default class Attackpower {
+export class Attackpower {
   constructor(attack, distance) {
     this.attack = attack;
     this.distance = distance;
