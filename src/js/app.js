@@ -1,18 +1,17 @@
 
 // TODO: write your code here
-import sum from './basic';
-
-console.log('worked');
-
-console.log(sum([1, 2]));
+// import sum from './basic';
+//
+// console.log('worked');
+//
+// console.log(sum([1, 2]));
 //=====================================================
 
-"use strict"
-import Magician from './magician';
-import Daemon from './daemon';
+import { Magician } from './classMagician';
+import { Daemon } from './classDaemon';
 
-export default class Attackpower {//создаём класс от которого будут наследоваться другие классы
-  constructor(attack, distance) {//конструктор
+export default class Attackpower {
+  constructor(attack, distance) {
     this.attack = attack;
     this.distance = distance;
   }
@@ -37,8 +36,8 @@ console.log(magician.getAttack()); // Выведет 90
 const daemon = new Daemon(100, 2);
 console.log(daemon.getAttack()); // Выведет 72
 
-magician.isStoned = true;
-daemon.isStoned = true;
+magician.stoned = true;
+daemon.stoned = true;
 
 console.log(magician.getAttack()); // Выведет 85
 console.log(daemon.getAttack()); // Выведет 54
