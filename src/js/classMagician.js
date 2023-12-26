@@ -1,6 +1,7 @@
-import {Attackpower} from './app';
 
-export class Magician extends Attackpower {
+import Attackpower from './app';
+
+export default class Magician extends Attackpower {
   constructor(attack, distance, stoned = false) {
     super(attack, distance);
     this.stoned = stoned;
@@ -8,9 +9,8 @@ export class Magician extends Attackpower {
     this.distance = distance;
   }
 
-  get attack() {
-    const attackWithDistanceModifier = this.getAttackWithDistanceModifier();
-
+  getAttack() {
+    const attackWithDistanceModifier = this.attackWithDistanceModifier();
     if (this.stoned) {
       const stonedAttack = attackWithDistanceModifier - Math.log2(this.distance) * 5;
 
@@ -28,14 +28,14 @@ export class Magician extends Attackpower {
   }
 }
 // Пример использования
-const magician = new Magician(100, 2);
-console.log(magician.getAttack()); // Выведет 90
+// const magician = new Magician(100, 2);
+// console.log(magician.runAttack()); // Выведет 90
 
 // const daemon = new Daemon(100, 2);
-// console.log(daemon.getAttack()); // Выведет 72
+// console.log(daemon.runAttack()); // Выведет 72
 
-magician.stoned = true;
-// daemon.isStoned = true;
+// magician.stoned = true;
+// daemon.stoned = true;
 
-console.log(magician.getAttack()); // Выведет 85
-// console.log(daemon.getAttack()); // Выведет 54
+// console.log(magician.runAttack()); // Выведет 85
+// console.log(daemon.runAttack()); // Выведет 54
