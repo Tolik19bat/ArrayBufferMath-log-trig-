@@ -18,6 +18,14 @@ export default class Magician extends Attackpower {
     }
     return attackWithDistanceModifier;
   }
+  
+  get attack() {
+    return this.attack;
+  }
+
+  set attack(value) {
+    this.attack = value;
+  }
 
   get stoned() {
     return this.stoned;
