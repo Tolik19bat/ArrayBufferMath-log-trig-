@@ -1,10 +1,10 @@
 
 // TODO: write your code here
-// import sum from './basic';
-//
-// console.log('worked');
-//
-// console.log(sum([1, 2]));
+import sum from './basic';
+
+console.log('worked');
+
+console.log(sum([1, 2]));
 //=====================================================
 
 
@@ -17,6 +17,15 @@ export default class Attackpower {
   getAttackWithDistanceModifier() {//модификатор для коррекции линейного значения
     const distanceModifier = 1 - 0.1 * (this.distance - 1);
     return this.attack * distanceModifier;
+  }
+
+  getAttack() {
+    const attackWithDistanceModifier = this.getAttackWithDistanceModifier();
+    if (this.stoned) {
+      const stonedAttack = attackWithDistanceModifier - Math.log2(this.distance) * 5;
+      return stonedAttack >= 0 ? stonedAttack : 0;
+    }
+    return attackWithDistanceModifier;
   }
 }
 

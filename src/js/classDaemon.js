@@ -9,15 +9,6 @@ export default class Daemon extends Attackpower {
     this.distance = distance;
   }
 
- getAttack() {
-    const attackWithDistanceModifier = this.attackWithDistanceModifier();
-    if (this.stoned) {
-      const stonedAttack = attackWithDistanceModifier - Math.log2(this.distance) * 5;
-      return stonedAttack >= 0 ? stonedAttack : 0;
-    }
-    return attackWithDistanceModifier;
-  }
-
   get attack() {
     return this.attack;
   }

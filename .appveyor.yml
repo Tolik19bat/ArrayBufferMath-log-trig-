@@ -3,8 +3,8 @@ environment:
 
 branches:
   only:
-    - master  # ветка git
-    - main
+    - main  # ветка git
+    
 
 cache: node_modules  # кеширование
 
