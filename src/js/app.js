@@ -9,9 +9,26 @@ console.log(sum([1, 2]));
 
 
 export default class Attackpower {
-  constructor(attack, distance) {
+  constructor(attack, distance, stoned = false) {
     this.attack = attack;
     this.distance = distance;
+    this.stoned = stoned;
+  }
+
+  get _attack() {
+    return this.attack;
+  }
+
+  set _attack(value) {
+    this.attack = value;
+  }
+
+  get _stoned() {
+    return this.stoned;
+  }
+
+  set _stoned(value) {
+    this.stoned = value;
   }
 
   getAttackWithDistanceModifier() {//модификатор для коррекции линейного значения
@@ -30,14 +47,15 @@ export default class Attackpower {
 }
 
 // Пример использования
+// console.log('тесты')
 // const magician = new Magician(100, 2);
 // console.log(magician.runAttack()); // Выведет 90
-//
+
 // const daemon = new Daemon(100, 2);
 // console.log(daemon.runAttack()); // Выведет 72
-//
+
 // magician.stoned = true;
 // daemon.stoned = true;
-//
+
 // console.log(magician.runAttack()); // Выведет 85
 // console.log(daemon.runAttack()); // Выведет 54

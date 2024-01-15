@@ -2,27 +2,10 @@
 import Attackpower from './app';
 
 export default class Magician extends Attackpower {
-  constructor(attack, distance, stoned = false) {
+  constructor(attack, distance) {
     super(attack, distance);
-    this.stoned = stoned;
     this.attack = attack;
     this.distance = distance;
-  }
-
-  get attack() {
-    return this.attack;
-  }
-
-  set attack(value) {
-    this.attack = value;
-  }
-
-  get stoned() {
-    return this.stoned;
-  }
-
-  set stoned(value) {
-    this.stoned = value;
   }
 }
 
