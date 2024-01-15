@@ -11,25 +11,21 @@ import Magician from '../app'; //путь к нашим классам
 import Daemon from '../app';
 
 test('getAttack должен правильно рассчитывать атаку, не будучи забит камнями', () => {
-  let magician = new Magician(100, 2);
-  magician.stoned = false;
+  let magician = new Magician(100, 2, false);
   expect(magician.getAttack()).toBe(90);
 });
 
 test('getAttack должен правильно рассчитывать атаку с камнями', () => {
-  const magician = new Magician(100, 2);
-  magician.stoned = true;
+  const magician = new Magician(100, 2, true);
   expect(magician.getAttack()).toBe(85);
 });
 
 test('getAttack должен правильно рассчитывать атаку не будучи забит камнями', () => {
-  const daemon = new Daemon(100, 2);
-  daemon.stoned = false;
+  const daemon = new Daemon(100, 2, false);
   expect(daemon.getAttack()).toBe(90);
 });
 
 test('getAttack должен правильно рассчитывать атаку с камням', () => {
-  const daemon = new Daemon(100, 2);
-  daemon.stoned = true;
+  const daemon = new Daemon(100, 2, true);
   expect(daemon.getAttack()).toBe(85);
 });
