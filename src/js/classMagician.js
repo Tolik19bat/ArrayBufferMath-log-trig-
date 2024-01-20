@@ -2,22 +2,18 @@
 import Attackpower from './app';
 
 export default class Magician extends Attackpower {
-  constructor(attack, distance) {
-    super(attack, distance);
-    this.attack = attack;
-    this.distance = distance;
-  }
+  // Конструктор дочернего класса удален, так как он идентичен родительскому
 }
 
 // Пример использования
 // const magician = new Magician(100, 2);
-// console.log(magician.runAttack()); // Выведет 90
+// console.log(magician.attack); // Выведет 90
 
 // const daemon = new Daemon(100, 2);
-// console.log(daemon.runAttack()); // Выведет 72
+// console.log(daemon.attack); // Выведет 90
 
-// magician.stoned = true;
-// daemon.stoned = true;
+// magician._stoned = true;
+// daemon._stoned = true;
 
-// console.log(magician.runAttack()); // Выведет 85
-// console.log(daemon.runAttack()); // Выведет 54
+// console.log(magician.attack); // Выведет 85
+// console.log(daemon.attack); // Выведет 85

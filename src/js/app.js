@@ -9,18 +9,25 @@ console.log(sum([1, 2]));
 
 
 export default class Attackpower {
-  constructor(attack, distance, stoned = false) {
-    this.attack = attack;
+  constructor(attackBase, distance, stoned = false) {
+    this.attackBase = attackBase;
     this.distance = distance;
     this.stoned = stoned;
   }
 
-  get _attack() {
-    return this.attack;
+  getAttackWithDistanceModifier() {
+    const distanceModifier = 1 - 0.1 * (this.distance - 1);
+    return this.attackBase * distanceModifier;
   }
 
-  set _attack(value) {
-    this.attack = value;
+  get attack() {
+    const attackWithDistanceModifier = this.getAttackWithDistanceModifier();
+    if (this.stoned) {
+      const stonedAttack =
+        attackWithDistanceModifier - Math.log2(this.distance) * 5;
+      return Math.max(stonedAttack, 0); // Добавлена проверка на минимальное значение 0
+    }
+    return attackWithDistanceModifier;
   }
 
   get _stoned() {
@@ -30,32 +37,15 @@ export default class Attackpower {
   set _stoned(value) {
     this.stoned = value;
   }
-
-  getAttackWithDistanceModifier() {//модификатор для коррекции линейного значения
-    const distanceModifier = 1 - 0.1 * (this.distance - 1);
-    return this.attack * distanceModifier;
-  }
-
-  getAttack() {
-    const attackWithDistanceModifier = this.getAttackWithDistanceModifier();
-    if (this.stoned) {
-      const stonedAttack = attackWithDistanceModifier - Math.log2(this.distance) * 5;
-      return stonedAttack >= 0 ? stonedAttack : 0;
-    }
-    return attackWithDistanceModifier;
-  }
 }
-
-// Пример использования
-// console.log('тесты')
 // const magician = new Magician(100, 2);
-// console.log(magician.runAttack()); // Выведет 90
+// console.log(magician.attack); // Выведет 90
 
 // const daemon = new Daemon(100, 2);
-// console.log(daemon.runAttack()); // Выведет 72
+// console.log(daemon.attack); // Выведет 90
 
-// magician.stoned = true;
-// daemon.stoned = true;
+// magician._stoned = true;
+// daemon._stoned = true;
 
-// console.log(magician.runAttack()); // Выведет 85
-// console.log(daemon.runAttack()); // Выведет 54
+// console.log(magician.attack); // Выведет 85
+// console.log(daemon.attack); // Выведет 85
