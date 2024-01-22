@@ -30,6 +30,10 @@ export default class Attackpower {
     return attackWithDistanceModifier;
   }
 
+  set attack(value) {
+    this.attackBase = value;
+  }
+
   get _stoned() {
     return this.stoned;
   }
